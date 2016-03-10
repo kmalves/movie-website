@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Movie Trailers(Fresh Tomatoes)</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+             position: absolute;
+             top: -12px;
+             right: -12px;
+             z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 30px;
+            padding-top: 30px;
+        }
+        .movie-tile:hover {
+            background-color: white;
+            border-left: solid;
+            border-color: thik double black;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">My Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="pzI4D6dyp_o" data-toggle="modal" data-target="#trailer">
+    <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcSxnFajw-bNDE0E9VXDWL9A7wgX84YPG_A7XXgqMeZZIG6M5u1c" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">The King's Speech</h3>
+    <p class="text-left">
+      The story of King George VI of the United Kingdom of Great Britain and Northern Ireland, his impromptu ascension to the throne and the speech therapist who helped the unsure monarch become worthy of it.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>September 6, 2010
+    </p>  
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="DmYI5-M_foE" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/35226/p35226_p_v7_ae.jpg" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">Million Dollar Baby</h3>
+    <p class="text-left">
+      A determined woman works with a hardened boxing trainer to become a professional.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>December 15, 2004
+    </p>  
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="S5CjKEFb-sM" data-toggle="modal" data-target="#trailer">
+    <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcQQ5vi9xgRkP0nk5aRn8tcGEGRnOQyM-aAS1ldqfQSi_69V1yfU" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">The Imitation Game</h3>
+    <p class="text-left">
+      During World War II, mathematician Alan Turing tries to crack the enigma code with help from fellow mathematicians.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>January 7, 2015
+    </p>  
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="vhFVZsk3XEs" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/192248/p192248_p_v7_aa.jpg" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">The Hangover</h3>
+    <p class="text-left">
+      Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>June 5, 2009
+    </p>  
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="66TuSJo4dZM" data-toggle="modal" data-target="#trailer">
+    <img src="https://trailers.apple.com/trailers/wb/inception/images/poster-large.jpg?lastmod=1" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">Inception</h3>
+    <p class="text-left">
+      A thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>July 13, 2010
+    </p>  
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 movie-tile" data-trailer-youtube-id="-eiud6lixkE" data-toggle="modal" data-target="#trailer">
+    <img src="https://31.media.tumblr.com/6e185068a23c28026b69078d7fa73079/tumblr_inline_n6izy8fGMp1qbcy4m.jpg" width="220" height="342" align="left" margin-right="10">
+    <div class="row">
+    <div class="col-xs-4 col-sm-6">
+    <h3 class="text-center">Sophie's Choice</h3>
+    <p class="text-left">
+      A mother has to make a very difficult decision.
+    </p>
+    <p class="text-left">
+      <b>Released: </b>December 8, 1982
+    </p>  
+    </div>
+    </div>
+</div>
+
+    </div>
+  </body>
+</html>
